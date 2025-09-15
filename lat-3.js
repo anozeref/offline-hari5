@@ -16,24 +16,25 @@ console.log('\nDaftar Nama Produk:', daftarnama);
 //Sortir harga
 let urutharga = [...produk].sort((a,b)=>b.harga-a.harga);
 console.log('\nUrutan Berdasarkan harga Tertinggi>Terendah): ');
-urutharga.forEach(pro=>console.log(`${pro.nama} - harga: ${pro.harga}`));
+urutharga.forEach(pro=>
+    console.log(`${pro.nama} - harga: ${pro.harga}`));
 
-//Kelulusan
-let kelulusan = produk.map(item => {
+//Kategori Harga
+let kategori = produk.map(item => {
   return {
     ...item,
-    kelulusan: item.harga >= 40000000 ? "Mahal" : "Murah"
+    kategori: item.harga >= 4000000 ? "Mahal" : "Murah"
   };
 });
-console.log(kelulusan);
+console.log(kategori);
 
 //Cari Nama
 do {
   let carinama = prompt("Masukkan nama yang akan ditelusuri: ");
-  let hasilcari = kelulusan.find(pro => pro.nama.toLowerCase() === carinama.toLowerCase());
+  let hasilcari = kategori.find(pro => pro.nama.toLowerCase() === carinama.toLowerCase());
 
   if (hasilcari) {
-    console.log(`\nData ditemukan : ${hasilcari.nama} - harga: ${hasilcari.harga} - Status: ${hasilcari.kelulusan}`);
+    console.log(`\nData ditemukan : ${hasilcari.nama} - harga: ${hasilcari.harga} - Status: ${hasilcari.kategori}`);
   } else {
     console.log('\nData Tidak Ada');
   }

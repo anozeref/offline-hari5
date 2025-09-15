@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pencarian Data Kelulusan</title>
 </head>
 <body>
-    <script src="lat-2.js"></script>
+  <h1>Pencarian Data Kelulusan</h1>
+
+  <label for="nama">Masukkan nama:</label>
+  <input type="text" id="nama" placeholder="Contoh: Budi">
+  <button onclick="cariData()">Cari</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const kelulusan = [
+      { nama: "Budi", harga: 5000, kelulusan: "Lulus" },
+      { nama: "Ani", harga: 7000, kelulusan: "Tidak Lulus" },
+      { nama: "Cici", harga: 9000, kelulusan: "Lulus" }
+    ];
+
+    function cariData() {
+      const input = document.getElementById("nama").value.trim();
+      const hasilDiv = document.getElementById("hasil");
+
+      if (!input) {
+        hasilDiv.textContent = "Silakan masukkan nama terlebih dahulu.";
+        return;
+      }
+
+      const hasilcari = kelulusan.find(pro => pro.nama.toLowerCase() === input.toLowerCase());
+
+      if (hasilcari) {
+        hasilDiv.textContent = `Data ditemukan: ${hasilcari.nama} - harga: ${hasilcari.harga} - Status: ${hasilcari.kelulusan}`;
+      } else {
+        hasilDiv.textContent = "Data Tidak Ada";
+      }
+    }
+  </script>
 </body>
 </html>
